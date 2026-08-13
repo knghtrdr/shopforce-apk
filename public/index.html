@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopForce - Download</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0176D3, #3D9FFF);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .logo {
+            font-size: 48px;
+            font-weight: 800;
+            color: #0176D3;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        .tagline {
+            color: #64748B;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+        .download-btn {
+            background: #0176D3;
+            color: white;
+            text-decoration: none;
+            padding: 16px 48px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 24px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(1,118,211,0.3);
+            background: #0159a8;
+        }
+        .version {
+            color: #94A3B8;
+            font-size: 14px;
+            margin-top: 24px;
+        }
+        .info {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+            text-align: left;
+        }
+        .info h3 {
+            color: #0F172A;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        .info ol {
+            margin-left: 20px;
+            color: #64748B;
+            line-height: 1.8;
+        }
+        .info li {
+            margin-bottom: 8px;
+        }
+        .warning {
+            background: #FFF7ED;
+            border-left: 4px solid #F59E0B;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            text-align: left;
+        }
+        .warning strong {
+            color: #92400E;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .warning p {
+            color: #78350F;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">ShopForce</div>
+        <div class="tagline">Sports & Salesforce Merchandise</div>
+
+        <a href="/download" class="download-btn">
+            📲 Download APK
+        </a>
+
+        <div class="version">Version 1.0.0 • Android 5.0+ • 54 MB</div>
+
+        <div class="info">
+            <h3>📋 Installation Steps</h3>
+            <ol>
+                <li>Tap "Download APK" button above</li>
+                <li>Allow downloads from your browser if prompted</li>
+                <li>Open the downloaded file</li>
+                <li>Enable "Install from Unknown Sources" when asked</li>
+                <li>Tap "Install" and wait for installation</li>
+                <li>Tap "Open" to launch ShopForce</li>
+            </ol>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ SFMC Credentials Required</strong>
+            <p>You'll need Salesforce Marketing Cloud credentials (App ID, Access Token, Server URL, MID) to complete setup. Contact your administrator if you don't have these.</p>
+        </div>
+    </div>
+</body>
+</html>
