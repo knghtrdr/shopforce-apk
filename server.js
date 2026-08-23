@@ -35,7 +35,7 @@ app.get('/api/download-url', (req, res) => {
   res.json({
     downloadUrl: `${baseUrl}/download`,
     version: '1.0.0',
-    size: '54 MB',
+    size: '132 MB',
     platform: 'Android'
   });
 });
