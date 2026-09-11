@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShopForce — Einstein & MobilePush demo store</title>
+  <link rel="stylesheet" href="shop.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html"><img src="logo.png" alt="" /> ShopForce</a>
+    <nav class="nav">
+      <a href="index.html">Catalog</a>
+      <a href="cart.html">Cart <span data-cart-count>0</span></a>
+    </nav>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Shop the catalog. Fuel the MCE demo.</h1>
+      <p>
+        Browse and cart events go to Marketing Cloud Einstein Collect.js.
+        Pair this site with the ShopForce Android app: same email as Contact Key,
+        then Abandoned Browse, Abandoned Cart, and MobilePush journeys can fire in real time.
+      </p>
+      <div class="ident">
+        <input id="email" type="email" placeholder="Demo email (Contact Key)" />
+        <button type="button" id="saveEmail">Identify for Collect</button>
+      </div>
+    </section>
+    <div id="grid" class="grid"></div>
+    <section class="cfg">
+      <h2>MobilePush + Android app</h2>
+      <p>
+        In Journey Builder / MobilePush, set OpenDirect to a product deep link
+        (<code>shopforce://product/af001</code>) or the matching web URL from a product page.
+        Testers install the same APK, register with the email used above, then Allow notifications.
+      </p>
+      <p>
+        <a href="https://github.com/knghtrdr/shopforce-apk/releases/download/v1.0.0/shopforce.apk">Download ShopForce APK</a>
+        · Catalog home stays at this GitHub Pages URL so Collect and push links never change.
+      </p>
+    </section>
+    <section class="cfg">
+      <h2>Einstein Collect setup</h2>
+      <p>
+        In Marketing Cloud: Einstein → Web &amp; Mobile Analytics / Collect Tracking.
+        Paste your MID and Collect.js URL. Use the same email you registered in the ShopForce app.
+      </p>
+      <div class="ident">
+        <input id="mid" placeholder="Collect / MID (org id)" />
+        <input id="scriptUrl" placeholder="https://XXXX.collect.igodigital.com/collect.js" style="min-width:320px" />
+        <button type="button" id="saveCfg">Save Collect config</button>
+      </div>
+    </section>
+  </main>
+  <script src="shop.js"></script>
+  <script src="collect.js"></script>
+  <script>
+    const cfg = ShopForce.getCfg();
+    document.getElementById('email').value = cfg.email || '';
+    document.getElementById('mid').value = cfg.mid || '';
+    document.getElementById('scriptUrl').value = cfg.scriptUrl || '';
+    document.getElementById('saveEmail').onclick = () => {
+      const next = { ...ShopForce.getCfg(), email: document.getElementById('email').value.trim() };
+      ShopForce.saveCfg(next);
+      ShopCollect.identify();
+      ShopForce.toast('Collect identity set');
+    };
+    document.getElementById('saveCfg').onclick = () => {
+      ShopForce.saveCfg({
+        ...ShopForce.getCfg(),
+        mid: document.getElementById('mid').value.trim(),
+        scriptUrl: document.getElementById('scriptUrl').value.trim(),
+        email: document.getElementById('email').value.trim() || ShopForce.getCfg().email,
+      });
+      ShopCollect.ensureCollect();
+      ShopCollect.identify();
+      ShopForce.toast('Collect config saved');
+    };
+    ShopCollect.trackPageView();
+    ShopForce.loadCatalog().then(({ products }) => {
+      document.getElementById('grid').innerHTML = products.map((p) => `
+        <a class="card" href="${ShopForce.productUrl(p.id)}">
+          <img src="${p.image}" alt="${p.name}" />
+          <div class="meta">
+            ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+            <h3>${p.name}</h3>
+            <div class="price">${ShopForce.money(p.price)}</div>
+          </div>
+        </a>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

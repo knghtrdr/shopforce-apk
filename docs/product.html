@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product — ShopForce</title>
+  <link rel="stylesheet" href="shop.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html"><img src="logo.png" alt="" /> ShopForce</a>
+    <nav class="nav">
+      <a href="index.html">Catalog</a>
+      <a href="cart.html">Cart <span data-cart-count>0</span></a>
+    </nav>
+  </header>
+  <main class="wrap" id="root">Loading…</main>
+  <script src="shop.js"></script>
+  <script src="collect.js"></script>
+  <script>
+    const id = ShopForce.qs('id');
+    ShopForce.loadCatalog().then(({ products }) => {
+      const p = products.find((x) => x.id === id);
+      const root = document.getElementById('root');
+      if (!p) {
+        root.innerHTML = '<p>Product not found.</p>';
+        return;
+      }
+      document.title = p.name + ' — ShopForce';
+      ShopCollect.trackPageView(p.id);
+      const web = location.href.split('#')[0];
+      const app = ShopForce.appLink(p.id);
+      root.innerHTML = `
+        <section class="product">
+          <img src="${p.image}" alt="${p.name}" />
+          <div>
+            <div class="badge">${p.brand || ''}</div>
+            <h1>${p.name}</h1>
+            <p>${p.description || ''}</p>
+            <p class="price">${ShopForce.money(p.price)}</p>
+            <button class="btn" type="button" id="add">Add to cart (Abandoned Cart)</button>
+            <div class="links">
+              <strong>Use these in MobilePush</strong>
+              <code>${app}</code>
+              <button class="btn" type="button" onclick="ShopForce.copy('${app}')">Copy OpenDirect</button>
+              <code>${web}</code>
+              <button class="btn" type="button" onclick="ShopForce.copy('${web}')">Copy web URL</button>
+            </div>
+          </div>
+        </section>
+      `;
+      document.getElementById('add').onclick = () => ShopForce.addToCart(p);
+    });
+  </script>
+</body>
+</html>

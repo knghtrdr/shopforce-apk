@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart — ShopForce</title>
+  <link rel="stylesheet" href="shop.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html"><img src="logo.png" alt="" /> ShopForce</a>
+    <nav class="nav">
+      <a href="index.html">Catalog</a>
+      <a href="cart.html">Cart <span data-cart-count>0</span></a>
+    </nav>
+  </header>
+  <main class="wrap">
+    <h1>Cart</h1>
+    <p>Leaving items here (without converting) is the Abandoned Cart signal for Einstein / Journey Builder.</p>
+    <div id="rows"></div>
+    <p id="total"></p>
+    <button class="btn" type="button" id="convert">Complete demo order (trackConversion)</button>
+  </main>
+  <script src="shop.js"></script>
+  <script src="collect.js"></script>
+  <script>
+    function render() {
+      const cart = ShopForce.getCart();
+      ShopCollect.trackCart(cart);
+      document.getElementById('rows').innerHTML = cart.length
+        ? cart.map((i) => `
+            <div class="cart-row">
+              <img src="${i.image}" alt="" />
+              <div>
+                <strong>${i.name}</strong>
+                <div>${i.quantity} × ${ShopForce.money(i.price)}</div>
+              </div>
+            </div>
+          `).join('')
+        : '<p>Cart is empty. Browse a product to start Abandoned Browse, then add to cart.</p>';
+      const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+      document.getElementById('total').textContent = cart.length ? 'Total ' + ShopForce.money(total) : '';
+    }
+    document.getElementById('convert').onclick = () => {
+      const cart = ShopForce.getCart();
+      if (!cart.length) return ShopForce.toast('Cart is empty');
+      const order = 'WEB-' + Date.now();
+      ShopCollect.trackConversion(cart, order);
+      ShopForce.saveCart([]);
+      render();
+      ShopForce.toast('Conversion tracked · ' + order);
+    };
+    render();
+  </script>
+</body>
+</html>
