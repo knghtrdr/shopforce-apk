@@ -31,7 +31,7 @@
 <body>
   <h1>ShopForce User Guide</h1>
   <p class="sub">SFMC MobilePush demo app for Android — download, connect, register, and send messages.</p>
-  <p>Use this guide to install ShopForce, connect it to <strong>your own Marketing Cloud demo account</strong> or the shared <strong>S50 Demo</strong> business unit, register as a contact, and send test push / inbox messages.</p>
+  <p>Use this guide to install ShopForce, connect it to <strong>your own Marketing Cloud demo account</strong> or the shared <strong>S50 Demo</strong> business unit, register as a contact, and send test <strong>push</strong>, <strong>inbox</strong>, and <strong>in-app</strong> messages.</p>
   <p class="note">Android only. This is a sideloaded demo APK, not a Play Store listing. Values you enter in the app are stored only on your device.</p>
 
   <h2>1. Download the app</h2>
@@ -136,7 +136,7 @@
   </ul>
   <p>Expand <strong>App</strong> if you want to confirm MID and that MobilePush is Configured. Use <strong>Allow notifications</strong> in Preferences so the device can receive push.</p>
   <div class="shot">
-    <img alt="Profile tab with User Details expanded showing email, phone, name, and Contact Key" src="https://shopforce-app.github.io/guide/profile-user-details.png" />
+    <img alt="Profile tab with User Details expanded showing email, phone, name, and Contact Key" src="https://shopforce-app.github.io/guide/profile-user-details.png?v=2" />
     <div class="cap">Profile → User Details — confirm email, phone, name, and Contact Key</div>
   </div>
 
@@ -155,6 +155,7 @@
       <ul>
         <li><strong>Alert</strong> (push only) → appears in the app under Messages → <strong>Notifications</strong>, and as a system notification.</li>
         <li><strong>Alert + Inbox</strong> or <strong>Inbox Only</strong> → appears under Messages → <strong>Inbox messages</strong>. Push-only alerts do <em>not</em> land in Inbox.</li>
+        <li><strong>In-App Message</strong> → overlay on top of ShopForce while the app is open (full screen, modal, or banner). It does <em>not</em> appear in the Messages tab. See the next section.</li>
       </ul>
     </li>
     <li>Target the contact by Contact Key (your registered email), then send.</li>
@@ -162,10 +163,41 @@
     <li>Open ShopForce → <strong>Messages</strong>. Pull down to refresh if the inbox is empty.</li>
   </ol>
   <div class="shot">
-    <img alt="Messages tab with Notifications and Inbox messages buttons" src="https://shopforce-app.github.io/guide/messages-inbox.png" />
+    <img alt="Messages tab with Notifications and Inbox messages buttons" src="https://shopforce-app.github.io/guide/messages-inbox.png?v=2" />
     <div class="cap">Messages tab — Notifications for push alerts, Inbox messages for SFMC inbox</div>
   </div>
-  <p class="note">You can also send from Journey Builder with a MobilePush activity. Use the same MobilePush app, the same Contact Key, and Alert + Inbox if you want the message in the in-app inbox.</p>
+  <p class="note">You can also send Alert / Inbox from Journey Builder with a MobilePush activity. Use the same MobilePush app and the same Contact Key.</p>
+
+  <h3>Send an In-App Message</h3>
+  <p>In-App Messages (IAM) are drawn by the Marketing Cloud SDK as an overlay while ShopForce is in the foreground. They are <strong>not</strong> Inbox messages. The app already includes the MobilePush SDK with IAM enabled, so you only configure and activate the message in your demo BU.</p>
+  <table>
+    <tr><th>Message type in MobilePush</th><th>Where the tester sees it</th></tr>
+    <tr><td>Alert (push)</td><td>System notification + Messages → Notifications</td></tr>
+    <tr><td>Alert + Inbox / Inbox Only</td><td>Messages → Inbox messages</td></tr>
+    <tr><td>In-App Message (Full / Modal / Banner)</td><td>Overlay on Home, Explore, Cart, or whichever screen is open — not in Messages</td></tr>
+  </table>
+  <ol>
+    <li>In Marketing Cloud, go to <strong>Mobile Studio → MobilePush</strong>.</li>
+    <li>Open <strong>Content</strong> (or Overview → Create) and choose <strong>In-App Message</strong>. Do not pick Inbox Only for this test.</li>
+    <li>Pick a layout:
+      <ul>
+        <li><strong>Full</strong> — covers the whole screen</li>
+        <li><strong>Modal</strong> — card in the center with a dismiss control</li>
+        <li><strong>Banner</strong> — strip at the top or bottom</li>
+      </ul>
+    </li>
+    <li>Add a title, body, optional image, and a button. For the button URL you can use a ShopForce deep link such as <code>shopforce://product/af001</code>.</li>
+    <li>Set <strong>when it displays</strong>:
+      <ul>
+        <li><strong>Easiest for a demo:</strong> display when the app next opens (next session / app open). Activate the message, then on the phone <strong>force-close ShopForce and reopen it</strong>. The overlay should appear on launch.</li>
+        <li><strong>Event-triggered:</strong> display when a named event fires. ShopForce already tracks events the SDK can use, including <code>PurchaseComplete</code> (demo checkout), <code>CartAbandonment</code>, <code>BrowseAbandonment</code>, <code>WishlistAbandonment</code>, and <code>Search</code>. The event name in MobilePush must match exactly. Activate the message, keep the app open, then perform that action (for example complete checkout).</li>
+      </ul>
+    </li>
+    <li>Target the same registered contact (Contact Key = the email from step 3), or a filter that includes that contact. Activate / start the message.</li>
+    <li>Bring ShopForce to the foreground (or relaunch it). The IAM appears as an overlay. Dismiss it with the close control or the button you configured.</li>
+  </ol>
+  <p class="warn">If nothing appears: confirm the device is <strong>Registered</strong> in MobilePush, the IAM is <strong>Active</strong>, and you used <strong>In-App Message</strong> (not Inbox). The app must be open. After uninstall/reinstall, send to the new contact — the old device record will not show the message.</p>
+  <p class="note">Journey Builder can also use an <strong>In-App Message</strong> activity on the same MobilePush app. Wait for the contact to enter the journey, then open ShopForce so the overlay can display.</p>
 
   <h2>Quick reference</h2>
   <table>
@@ -174,7 +206,8 @@
     <tr><td>Credentials</td><td>Your demo MobilePush app, or S50 Demo MID <code>500007709</code> (ask Team member / Swarm Lead for SFMC user access)</td></tr>
     <tr><td>Register</td><td>Email, phone, first name, last name — email = Contact Key</td></tr>
     <tr><td>Review</td><td>Profile → User Details</td></tr>
-    <tr><td>Send</td><td>MobilePush in that demo BU → contact by email → Alert and/or Inbox → Messages tab</td></tr>
+    <tr><td>Send push / inbox</td><td>MobilePush → contact by email → Alert and/or Inbox → Messages tab</td></tr>
+    <tr><td>Send in-app</td><td>MobilePush → Content → In-App Message (Full / Modal / Banner) → activate → reopen ShopForce (or fire a matching event). Overlay on the open screen, not in Messages.</td></tr>
   </table>
   <p>If setup needs to start over, Profile → Account → <strong>Reset App</strong> clears credentials and registration. Logout clears registration only.</p>
 </body>
