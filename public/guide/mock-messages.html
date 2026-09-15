@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1" />
+  <title>Messages</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #F3F7FC; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .phone { width: 390px; margin: 0 auto; background: #F3F7FC; }
+    .status { height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; font-size: 13px; font-weight: 600; color: #032D60; }
+    .page { padding: 8px 20px 8px; }
+    h1 { font-size: 32px; font-weight: 800; color: #032D60; letter-spacing: -0.6px; }
+    .sub { font-size: 14px; color: #5B6F86; margin: 4px 0 16px; }
+    .segs { display: flex; gap: 8px; }
+    .seg { flex: 1; text-align: center; padding: 10px 8px; border-radius: 12px; border: 1px solid #D7E3F0; font-size: 13px; font-weight: 700; color: #032D60; background: #fff; }
+    .seg.on { background: #0176D3; color: #fff; border-color: #0176D3; }
+    .empty { text-align: center; padding: 24px 16px 16px; }
+    .box { font-size: 56px; }
+    .empty h2 { margin-top: 16px; font-size: 20px; color: #032D60; }
+    .empty p { margin-top: 8px; font-size: 14px; color: #5B6F86; line-height: 1.5; }
+    .tabbar { height: 80px; background: #F8FBFF; border-top: 1px solid #D7E3F0; display: flex; padding: 8px 4px 16px; }
+    .tab { flex: 1; text-align: center; font-size: 10px; font-weight: 600; color: #8AA0B5; }
+    .tab.on { color: #0176D3; }
+    .ico { font-size: 20px; display: block; margin-bottom: 2px; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="status"><span>9:41</span><span>LTE  100%</span></div>
+    <div class="page">
+      <h1>Messages</h1>
+      <div class="sub">All caught up</div>
+      <div class="segs">
+        <div class="seg">Notifications</div>
+        <div class="seg on">Inbox messages</div>
+      </div>
+      <div class="empty">
+        <div class="box">📭</div>
+        <h2>No inbox messages</h2>
+        <p>Send Alert + Inbox or Inbox Only from MobilePush. Push-only alerts appear under Notifications.</p>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div class="tab"><span class="ico">⌂</span>Home</div>
+      <div class="tab"><span class="ico">🧭</span>Explore</div>
+      <div class="tab"><span class="ico">🛒</span>Cart</div>
+      <div class="tab"><span class="ico">♡</span>Saved</div>
+      <div class="tab on"><span class="ico">💬</span>Messages</div>
+      <div class="tab"><span class="ico">👤</span>Profile</div>
+    </div>
+  </div>
+</body>
+</html>
