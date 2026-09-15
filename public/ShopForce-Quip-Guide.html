@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ShopForce — User Setup Guide</title>
+  <title>ShopForce - User Setup Guide</title>
   <style>
     html, body { background: #ffffff; color-scheme: light; }
     body { font-family: Arial, Helvetica, sans-serif; color: #032d60; max-width: 820px; margin: 32px auto; line-height: 1.55; padding: 0 20px 64px; }
@@ -30,7 +30,7 @@
 </head>
 <body>
   <h1>ShopForce User Guide</h1>
-  <p class="sub">SFMC MobilePush demo app for Android — download, connect, register, and send messages.</p>
+  <p class="sub">SFMC MobilePush demo app for Android - download, connect, register, and send messages.</p>
   <p>Use this guide to install ShopForce, connect it to <strong>your own Marketing Cloud demo account</strong> or the shared <strong>S50 Demo</strong> business unit, register as a contact, and send test <strong>push</strong>, <strong>inbox</strong>, and <strong>in-app</strong> messages.</p>
   <p class="note">Android only. This is a sideloaded demo APK, not a Play Store listing. Values you enter in the app are stored only on your device.</p>
 
@@ -56,7 +56,7 @@
   <p>On first launch, ShopForce shows a two-step setup bar: <strong>1. Connect</strong> then <strong>2. Register</strong>. The Connect screen is <strong>Connect Your MC Instance</strong>.</p>
   <div class="shot">
     <img alt="Connect Your MC Instance screen with App ID, Access Token, Server URL, and MID fields" src="https://shopforce-app.github.io/guide/connect-credentials.png" />
-    <div class="cap">Connect Your MC Instance — paste App ID, Access Token, Server URL, and MID</div>
+    <div class="cap">Connect Your MC Instance - paste App ID, Access Token, Server URL, and MID</div>
   </div>
 
   <h3>Choose which account to use</h3>
@@ -86,7 +86,7 @@
       </ul>
     </li>
     <li>Copy <strong>App ID</strong>, <strong>Access Token</strong>, and <strong>Server URL</strong> (also called App Endpoint).</li>
-    <li>Copy <strong>MID</strong> from <strong>Setup → Company Settings → Account</strong> — for S50 Demo this is <code>500007709</code>.</li>
+    <li>Copy <strong>MID</strong> from <strong>Setup → Company Settings → Account</strong> - for S50 Demo this is <code>500007709</code>.</li>
   </ol>
   <p class="note">Each tester should use credentials from a BU they are allowed to send from. Do not paste someone else’s Access Token into your phone unless they have explicitly shared a demo app for this purpose.</p>
 
@@ -107,16 +107,16 @@
     <div class="cap">Register with email, phone, first name, and last name</div>
   </div>
   <ol>
-    <li><strong>Email Address</strong> (required) — this becomes your <strong>Contact Key</strong> in Marketing Cloud. Use the same email you will look up when sending.</li>
-    <li><strong>Phone Number</strong> — include country code if you can; at least 10 digits.</li>
-    <li><strong>First Name</strong> and <strong>Last Name</strong> — stored on the device and shown on Profile. First name is used in the home greeting.</li>
+    <li><strong>Email Address</strong> (required) - this becomes your <strong>Contact Key</strong> in Marketing Cloud. Use the same email you will look up when sending.</li>
+    <li><strong>Phone Number</strong> - include country code if you can; at least 10 digits.</li>
+    <li><strong>First Name</strong> and <strong>Last Name</strong> - stored on the device and shown on Profile. First name is used in the home greeting.</li>
     <li>Tap <strong>Register &amp; Continue</strong>. You should see a short “You’re registered” success overlay, then Home.</li>
     <li>When Android asks, <strong>Allow notifications</strong> for ShopForce. You can also turn this on later in Profile → Allow notifications.</li>
   </ol>
   <p class="ok">After registration you land on Home. The bottom menu is <span class="tabs">Home · Explore · Cart · Saved · Messages · Profile</span>. Cart stays in the tab bar (you can also open it from the bag icon on Home).</p>
   <div class="shot">
     <img alt="ShopForce Home screen with Cart in the bottom tab bar" src="https://shopforce-app.github.io/guide/home-cart-tab.png" />
-    <div class="cap">Home after registration — Cart remains in the bottom menu</div>
+    <div class="cap">Home after registration - Cart remains in the bottom menu</div>
   </div>
 
   <h2>4. Review your details in Profile</h2>
@@ -131,7 +131,7 @@
   <p>Expand <strong>App</strong> if you want to confirm MID and that MobilePush is Configured. Use <strong>Allow notifications</strong> in Preferences so the device can receive push.</p>
   <div class="shot">
     <img alt="Profile tab with User Details expanded showing email, phone, name, and Contact Key" src="https://shopforce-app.github.io/guide/profile-user-details.png?v=2" />
-    <div class="cap">Profile → User Details — confirm email, phone, name, and Contact Key</div>
+    <div class="cap">Profile → User Details - confirm email, phone, name, and Contact Key</div>
   </div>
 
   <h2>5. Send messages from your demo instance</h2>
@@ -140,7 +140,7 @@
   <ol>
     <li>In the app, Profile → <strong>Allow notifications</strong> is on, and Android system settings also allow ShopForce notifications.</li>
     <li>In Marketing Cloud, open <strong>Mobile Studio → MobilePush</strong> (or Contact Builder) and look up the contact by <strong>Contact Key = the email you registered</strong>.</li>
-    <li>Wait until that contact’s device shows as <strong>Registered</strong>. A brand-new install can take a short time; if it stays Not Registered, open the app once more, toggle notifications, and search again. After uninstall, always send to the <em>new</em> contact/device — the old FCM token is dead.</li>
+    <li>Wait until that contact’s device shows as <strong>Registered</strong>. A brand-new install can take a short time; if it stays Not Registered, open the app once more, toggle notifications, and search again. After uninstall, always send to the <em>new</em> contact/device - the old FCM token is dead.</li>
   </ol>
   <h3>Send a test from MobilePush</h3>
   <ol>
@@ -158,7 +158,7 @@
   </ol>
   <div class="shot">
     <img alt="Messages tab with Notifications and Inbox messages buttons" src="https://shopforce-app.github.io/guide/messages-inbox.png?v=2" />
-    <div class="cap">Messages tab — Notifications for push alerts, Inbox messages for SFMC inbox</div>
+    <div class="cap">Messages tab - Notifications for push alerts, Inbox messages for SFMC inbox</div>
   </div>
   <p class="note">You can also send Alert / Inbox from Journey Builder with a MobilePush activity. Use the same MobilePush app and the same Contact Key.</p>
 
@@ -168,16 +168,16 @@
     <tr><th>Message type in MobilePush</th><th>Where the tester sees it</th></tr>
     <tr><td>Alert (push)</td><td>System notification + Messages → Notifications</td></tr>
     <tr><td>Alert + Inbox / Inbox Only</td><td>Messages → Inbox messages</td></tr>
-    <tr><td>In-App Message (Full / Modal / Banner)</td><td>Overlay on Home, Explore, Cart, or whichever screen is open — not in Messages</td></tr>
+    <tr><td>In-App Message (Full / Modal / Banner)</td><td>Overlay on Home, Explore, Cart, or whichever screen is open - not in Messages</td></tr>
   </table>
   <ol>
     <li>In Marketing Cloud, go to <strong>Mobile Studio → MobilePush</strong>.</li>
     <li>Open <strong>Content</strong> (or Overview → Create) and choose <strong>In-App Message</strong>. Do not pick Inbox Only for this test.</li>
     <li>Pick a layout:
       <ul>
-        <li><strong>Full</strong> — covers the whole screen</li>
-        <li><strong>Modal</strong> — card in the center with a dismiss control</li>
-        <li><strong>Banner</strong> — strip at the top or bottom</li>
+        <li><strong>Full</strong> - covers the whole screen</li>
+        <li><strong>Modal</strong> - card in the center with a dismiss control</li>
+        <li><strong>Banner</strong> - strip at the top or bottom</li>
       </ul>
     </li>
     <li>Add a title, body, optional image, and a button. For the button URL you can use a ShopForce deep link such as <code>shopforce://product/af001</code>.</li>
@@ -190,7 +190,7 @@
     <li>Target the same registered contact (Contact Key = the email from step 3), or a filter that includes that contact. Activate / start the message.</li>
     <li>Bring ShopForce to the foreground (or relaunch it). The IAM appears as an overlay. Dismiss it with the close control or the button you configured.</li>
   </ol>
-  <p class="warn">If nothing appears: confirm the device is <strong>Registered</strong> in MobilePush, the IAM is <strong>Active</strong>, and you used <strong>In-App Message</strong> (not Inbox). The app must be open. After uninstall/reinstall, send to the new contact — the old device record will not show the message.</p>
+  <p class="warn">If nothing appears: confirm the device is <strong>Registered</strong> in MobilePush, the IAM is <strong>Active</strong>, and you used <strong>In-App Message</strong> (not Inbox). The app must be open. After uninstall/reinstall, send to the new contact - the old device record will not show the message.</p>
   <p class="note">Journey Builder can also use an <strong>In-App Message</strong> activity on the same MobilePush app. Wait for the contact to enter the journey, then open ShopForce so the overlay can display.</p>
 
   <h2>Quick reference</h2>
@@ -198,7 +198,7 @@
     <tr><th>Step</th><th>Where</th></tr>
     <tr><td>Download</td><td>QR or APK release URL</td></tr>
     <tr><td>Credentials</td><td>Your demo MobilePush app, or S50 Demo MID <code>500007709</code> (ask Team member / Swarm Lead for SFMC user access)</td></tr>
-    <tr><td>Register</td><td>Email, phone, first name, last name — email = Contact Key</td></tr>
+    <tr><td>Register</td><td>Email, phone, first name, last name - email = Contact Key</td></tr>
     <tr><td>Review</td><td>Profile → User Details</td></tr>
     <tr><td>Send push / inbox</td><td>MobilePush → contact by email → Alert and/or Inbox → Messages tab</td></tr>
     <tr><td>Send in-app</td><td>MobilePush → Content → In-App Message (Full / Modal / Banner) → activate → reopen ShopForce (or fire a matching event). Overlay on the open screen, not in Messages.</td></tr>
